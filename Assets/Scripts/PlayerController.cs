@@ -79,10 +79,7 @@ public class PlayerController : MonoBehaviour
 
     void StartChop(bool state)
     {
-        if(m_IsChopping == state) 
-        { 
-            return;
-        }
+        if(m_IsChopping == state) return;
 
         m_IsChopping = state;
         CharacterAnimator.SetBool(AxeAnimation, state);

@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System.Collections;
 using UnityEngine;
 
 public class TreeObject : MonoBehaviour
@@ -15,9 +14,7 @@ public class TreeObject : MonoBehaviour
     [SerializeField] Transform m_TreeTop;
     [SerializeField] TreeBalk m_BalkPrefab;
 
-    private bool OnFloor;
     private bool isBurned;
-    private Vector3 prevPosition;
     private bool isDestroyed;
 
     public void Chop(Transform axe, PlayerController player)
@@ -49,12 +46,6 @@ public class TreeObject : MonoBehaviour
     {
         if(isDestroyed) return;
 
-        //int layer = collision.collider.gameObject.layer;
-        //if(layer == 0 || layer == 6)
-        //{
-        //    Destroy();
-        //    return;
-        //}
         //Debug.Log(gameObject.name + " collided with " + collision.collider.tag, collision.collider);
         if (collision.collider.CompareTag("Finish") && m_Strength > 0)
         {
@@ -94,29 +85,6 @@ public class TreeObject : MonoBehaviour
         var rb = transform.GetChild(1).GetComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.AddTorque(direction, ForceMode.Impulse);
-
-        prevPosition = m_TreeTop.position;
-
-        //StartCoroutine(CheckSpeed());
-    }
-
-    IEnumerator CheckSpeed()
-    {
-        while (true)
-        {
-            Vector3 direction = m_TreeTop.position - prevPosition;
-            treeRenderer.material.SetVector("_Direction", direction);
-            //m_Renderer.material.SetFloat("_Bend", direction.magnitude * 0.2f);
-            yield return null;
-        }
-    }
-
-    void Shake(Vector3 pos)
-    {
-        var rend = m_Tree.GetComponent<MeshRenderer>();
-        rend.material.SetVector("_HitPosition", pos);
-        rend.material.SetFloat("_ShakeStrength", 2);
-        //rend.material.DOFloat(0, "_ShakeStrength", 0.5f);
     }
 
     void CreateBalk()
