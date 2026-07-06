@@ -8,6 +8,7 @@ TagManager:
   - Balk
   - Hub
   - Lut
+  - BalkCollider
   layers:
   - Default
   - TransparentFX

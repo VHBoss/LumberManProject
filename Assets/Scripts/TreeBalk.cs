@@ -1,29 +1,27 @@
 using System.Collections;
 using UnityEngine;
-using DG.Tweening;
 
 public class TreeBalk : MonoBehaviour
 {
-    [SerializeField] Rigidbody[] m_Barks;
+    [SerializeField] TreeLog[] barks;
     [SerializeField] float forceX = 150;
     [SerializeField] float forceY = 20;
     [SerializeField] float breakPropability = 0.3f;
     [SerializeField] ParticleSystem poof;
-    [SerializeField] Material burnMaterial;
 
-    public void Split(float height)
+    public void Split(float height, float burnAmount)
     {
         float countf = height / 0.2f;
         int count = Mathf.FloorToInt(countf);
 
         gameObject.SetActive(true);
 
-        for (int i = 0; i < m_Barks.Length; i++)
+        for (int i = 0; i < barks.Length; i++)
         {
-            Rigidbody item = m_Barks[i];
+            var item = barks[i];
             if (i < count)
             {
-                item.AddForce(Random.Range(-forceX, forceX), forceY, forceX);
+                item.Init(burnAmount, forceX, forceY);
 
                 bool destroy = Random.Range(0f, 1f) < breakPropability;
                 if (destroy)
@@ -51,20 +49,5 @@ public class TreeBalk : MonoBehaviour
             //gameObject.SetActive(false);
             Destroy(item);
         }
-    }
-
-    public void Burn(Collider other)
-    {
-        other.tag = "Untagged";
-        Transform root = other.transform.parent;
-        if(root.GetComponent<MeshRenderer>().material == burnMaterial)
-        {
-            Debug.Log("Burn", other.gameObject);
-        }
-            root.GetComponent<MeshRenderer>().material = burnMaterial;
-        DOTween.Sequence()
-            .Append(root.DOScaleY(0, 0.3f))
-            .Append(root.DOMoveY(-0.6f, 0.3f))
-            .OnComplete(() => { if (root.gameObject != null) Destroy(root.gameObject); });
     }
 }

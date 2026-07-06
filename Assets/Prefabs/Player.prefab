@@ -1288,6 +1288,7 @@ GameObject:
   - component: {fileID: 7144028247685524754}
   - component: {fileID: 7404308517935673355}
   - component: {fileID: 2526993341998034648}
+  - component: {fileID: 6538181054383785701}
   - component: {fileID: 5505717158524589687}
   m_Layer: 3
   m_Name: Player
@@ -1387,6 +1388,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LutCollector
   ui: {fileID: 0}
   m_Target: {fileID: 4214364178713704669}
+--- !u!114 &6538181054383785701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9011071201435196736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726df3c1cb8fc664e97354b3d22c9152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  damage: {fileID: 0}
+  hp: {fileID: 0}
+  recoverTimeout: 5
+  recoverSpeed: 1
+  damageSpeed: 0.1
+  maxDistance: 10
+  maxDamagePerSecond: 50
 --- !u!114 &5505717158524589687
 MonoBehaviour:
   m_ObjectHideFlags: 0

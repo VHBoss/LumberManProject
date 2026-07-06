@@ -5,6 +5,8 @@ public class Gates : MonoBehaviour
 {
     [SerializeField] UIElement ui;
     [SerializeField] Transform gate;
+    [SerializeField] Transform coinTarget;
+    [SerializeField] Animator animator;
     [SerializeField] float loadTime = 0.2f;
     [SerializeField] int needCount = 10;
 
@@ -30,13 +32,22 @@ public class Gates : MonoBehaviour
         }
     }
 
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            CancelInvoke();
+        }
+    }
+
     void StartProcess()
     {
         if (currentCount >= needCount)
         {
             CancelInvoke();
             GetComponent<BoxCollider>().enabled = false;
-            gate.DOMoveY(-4, 2f);
+            //gate.DOMoveY(-4, 2f);
+            //animator.SetBool("Open", true);
             ui.gameObject.SetActive(false);
             return;
         }
@@ -44,16 +55,25 @@ public class Gates : MonoBehaviour
         GameObject coin = lutCollector.GetCoin();
         if (coin != null)
         {
-            currentCount++;
-            ui.SetCount(currentCount, needCount);
             coin.transform.SetParent(null);
             coin.SetActive(true);
 
             DOTween.Sequence()
-                .Append(coin.transform.DOMove(transform.position, 0.3f))
+                .Append(coin.transform.DOMove(coinTarget.position, 0.3f))
                 .Join(coin.transform.DOScale(0.8f, 0.3f))
                 .OnComplete(() =>
                 {
+                    currentCount++;
+                    ui.SetCount(currentCount, needCount);
+
+                    if (currentCount == needCount)
+                    {
+                        animator.SetBool("Open", true);
+                    }
+                    else
+                    {
+                        animator.SetTrigger("Take");
+                    }
                     Destroy(coin.gameObject);
                 });
         }

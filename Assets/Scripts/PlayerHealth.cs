@@ -10,50 +10,87 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] float recoverTimeout = 5;
     [SerializeField] float recoverSpeed = 1;
     [SerializeField] float damageSpeed = 0.1f;
+    [SerializeField] float maxDistance = 2.2f;
+    [SerializeField] float maxDamagePerSecond = 50f;
 
+    [Header("SFX")]
+    [SerializeField] AudioType sfxBurn;
+    [SerializeField] AudioType sfxDeath;
+
+    private Transform furnace;
     private PlayerController playerController;
     private float currentHealth = 100;
     private bool isDead;
-    private bool isHeating;
     private bool isCooldown;
     private float timeout;
+    public float burnTimer;
     private float currentDamage;
+    private PooledAudioSource sfxBurnHandler;
 
     void Start()
     {
         playerController = GetComponent<PlayerController>();
+        furnace = GameObject.FindAnyObjectByType<Furnace>().transform;
     }
 
     void Update()
     {
         if(isDead) return;
 
-        if (isHeating)
+        if (furnace != null)
         {
-            currentDamage += Time.deltaTime * damageSpeed;
-            currentHealth -= currentDamage;
+            float sqr_distance = furnace.position.x - transform.position.x;
+
+            if (sqr_distance <= maxDistance)
+            {
+                if(sfxBurnHandler == null) sfxBurnHandler = AudioManager.PlayAt(sfxBurn, transform.position);
+                burnTimer += Time.deltaTime;
+                burnTimer = Mathf.Clamp01(burnTimer);
+                sfxBurnHandler.Source.volume = burnTimer;
+
+                // Нанесение урона пропорционально расстоянию
+                float danger = 1f - Mathf.Clamp01(sqr_distance / maxDistance);
+                currentDamage = maxDamagePerSecond * danger * Time.deltaTime;
+                currentHealth -= currentDamage;
+                UpdateUI();
+
+                // Сбрасываем таймер восстановления при получении урона
+                timeout = recoverTimeout;
+                isCooldown = false;
+
+                if (currentHealth <= 0)
+                {
+                    Burn();
+                }
+            }
+            else if (!isCooldown && currentHealth < 100 && timeout <= 0)
+            {
+                // Начинаем восстановление если вышли из зоны
+                isCooldown = true;
+            }
+        }
+
+        // Восстановление здоровья
+        if (!isDead && isCooldown)
+        {
+            currentHealth += Time.deltaTime * recoverSpeed;
             UpdateUI();
 
-            if (currentHealth <= 0)
+            if (currentHealth >= 100)
             {
-                Burn();
+                currentHealth = 100;
+                isCooldown = false;
             }
         }
-        else
-        {
-            if (timeout > 0)
-            {
-                timeout -= Time.deltaTime;
-                if (timeout <= 0) isCooldown = true;            
-            }
 
-            if (isCooldown)
-            {
-                currentHealth += Time.deltaTime * recoverSpeed;
-                UpdateUI();
-                if (currentHealth >= 100) isCooldown = false;
-            }
+        // Таймер перед началом восстановления
+        if (!isCooldown && timeout > 0)
+        {
+            timeout -= Time.deltaTime;
         }
+
+        // Обрабатываем звук каждый кадр
+        ProcessAudio();
     }
 
     void UpdateUI()
@@ -66,8 +103,15 @@ public class PlayerHealth : MonoBehaviour
 
     public void Burn()
     {
+        if (isDead) return;
+
         playerController.SetDead();
         isDead = true;
+
+        AudioManager.PlayAt(sfxDeath, transform.position);
+
+        currentHealth = 0;
+        UpdateUI();
 
         DOTween.Sequence()
             .AppendInterval(2f)
@@ -80,13 +124,25 @@ public class PlayerHealth : MonoBehaviour
             });
     }
 
-    public void Heat(bool state)
+    void ProcessAudio()
     {
-        isHeating = state;
-        if (!state)
+        if (sfxBurnHandler == null)
+            return;
+
+        // Если рядом с печью, звук уже увеличивается в Update
+        float distance = furnace.position.x - transform.position.x;
+        if (distance <= maxDistance)
+            return;
+
+        burnTimer -= Time.deltaTime;
+        burnTimer = Mathf.Clamp01(burnTimer);
+
+        sfxBurnHandler.Source.volume = burnTimer;
+
+        if (burnTimer <= 0f)
         {
-            timeout = recoverTimeout;
-            currentDamage = 0;
+            sfxBurnHandler.Stop();
+            sfxBurnHandler = null;
         }
     }
 }

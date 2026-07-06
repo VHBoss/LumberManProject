@@ -9,6 +9,10 @@ public class BalkCollector : MonoBehaviour
     [SerializeField] private Transform m_Bag;
     [SerializeField] int maxCount = 100;
 
+    [Header("SFX")]
+    [SerializeField] AudioType sfxTakeBalk;
+    [SerializeField] AudioType sfxDepositBalk;
+
     public int BalkCount => balks.Count;
 
     private List<GameObject> balks = new List<GameObject>();
@@ -24,6 +28,8 @@ public class BalkCollector : MonoBehaviour
         {
             if (balks.Count < maxCount)
             {
+                AudioManager.PlayAt(sfxTakeBalk, transform.position);
+
                 balks.Add(other.gameObject);
                 UpdateUI(balks.Count);
                 UpdateBag();
@@ -65,6 +71,8 @@ public class BalkCollector : MonoBehaviour
     {
         if (balks.Count > 0)
         {
+            AudioManager.PlayAt(sfxDepositBalk, transform.position);
+
             GameObject balk = balks[0];
             balks.RemoveAt(0);
             UpdateUI(balks.Count);

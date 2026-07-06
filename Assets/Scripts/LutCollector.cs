@@ -7,6 +7,10 @@ public class LutCollector : MonoBehaviour
     [SerializeField] UIElement ui;
     [SerializeField] Transform m_Target;
 
+    [Header("SFX")]
+    [SerializeField] AudioType sfxTakeCoin;
+    [SerializeField] AudioType sfxDepositCoin;
+
     private int currentCount = 0;
     private List<GameObject> coins = new List<GameObject>();
 
@@ -29,6 +33,7 @@ public class LutCollector : MonoBehaviour
                 .Join(other.transform.DOScale(0.2f, 0.3f))
                 .OnComplete(() =>
                 {
+                    AudioManager.PlayAt(sfxTakeCoin, transform.position);
                     DOTween.Kill(other, true);
                     coins.Add(other.gameObject);
                     other.gameObject.SetActive(false);
@@ -46,6 +51,7 @@ public class LutCollector : MonoBehaviour
     {
         if (coins.Count > 0)
         {
+            AudioManager.PlayAt(sfxDepositCoin, transform.position);
             GameObject coin = coins[0];
             coins.RemoveAt(0);
             currentCount = coins.Count;

@@ -1,0 +1,91 @@
+1. alt
+	- Альтернативные звуки, если реалистичные не подойдут
+
+2. ambient
+	- ambient_loop
+		Общий эмбиент для всей локации
+
+3. character
+	- axe_miss_01
+	  axe_miss_02
+		Промах топора при ударе
+
+	- damage_loop
+		Дамаг по герою, когда он начинает гореть
+
+	- death_01
+	  death_02
+	  death_03
+	  death_04
+	  death_05
+		Звук смерти героя, выбери те, что нравятся больше всего
+
+	- footstep_01
+	  footstep_02
+	  footstep_03
+	  footstep_04
+		Звуки шагов по земле
+
+	- full_notification_var1
+		Звук забитого рюкзака, когда пытаешься подобрать бревно
+			
+4. coins
+	- coins_deposit_var1
+		Сдача монеты финальной двери. Если не подойдёт, будем использовать две следующих
+	- coins_drop
+		Выпадение монеты с паллетов
+	- coins_pickup
+		Подбор монеты героем
+	
+5. door
+	- open_var2
+		Открытие двери с анимацией руки
+
+	- taking_coins
+		Сбор монет рукой с анимацией
+
+6. furnace
+	- furnace_burning_loop
+		Тление поленьев во рту печи
+
+	- furnace_eat_01
+	  furnace_eat_02
+		Когда печь ест брёвна
+
+	- furnace_horn
+		Переход печи на другую стадию преследования
+
+	- furnace_moving_loop
+		Звук перемещения печи
+
+7. log
+	- log_deposit_01
+	  log_deposit_02
+	  log_deposit_03
+		Сдача брёвен на паллет
+
+	- log_fall
+		Звук удара бревна о землю. Может и не нужен
+
+8. trees
+	- axe_hit_var1_01
+	  axe_hit_var1_02
+	  axe_hit_var1_03
+		Удар топора по дереву
+
+	- tree_fall_end_01
+	  tree_fall_end_02
+	  tree_fall_end_03
+		Удар о землю ствола дерева и его разлом на брёвна
+
+
+	- tree_fall_start_01
+	  tree_fall_start_02
+	  tree_fall_start_03
+	  tree_fall_start_04
+		Когда дерево срублено и ствол начинает падать
+		
+	- wood_burning_loop
+		Когда деревья и брёвна начинают гореть из-за печи
+
+

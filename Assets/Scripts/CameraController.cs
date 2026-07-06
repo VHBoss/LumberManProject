@@ -2,17 +2,26 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Transform m_Target;
-    [SerializeField] private Vector3 offset;
+    [SerializeField] Transform target;
+    [SerializeField] Transform gate;
+    [SerializeField] Vector3 offset;
+    [SerializeField] float gateOffset;
+    [SerializeField] bool useCurrentCameraOffset;
 
     private Vector3 pos;
 
+    void Start()
+    {
+        if(useCurrentCameraOffset) offset = transform.position - target.position;
+    }
+
     void LateUpdate()
     {
-        if(m_Target == null) return;
+        if(target == null) return;
 
         pos = offset;
-        pos.x = m_Target.position.x + offset.x;
+        pos.x = target.position.x + offset.x;
+        pos.x = Mathf.Max(pos.x, gate.position.x - gateOffset);
         transform.position = pos;
     }
 }

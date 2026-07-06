@@ -22,7 +22,20 @@ public class Furnace : MonoBehaviour
     [Header("UI")]
     public UIElement ui;
 
-    public int currentSpeedNum = 0;
+    public Animator animator;
+
+    [Header("FX")]
+    public ParticleSystem[] dust;
+
+    [Header("SFX")]
+    public AudioType sfxMove;
+    public AudioType sfxEating;
+    public AudioType sfxNextLevel;
+
+    private PooledAudioSource sfxMoveHandle;
+    private PooledAudioSource sfxEatingHandle;
+    private int currentSpeedNum = 0;
+    private int prevSpeedNum;
     private bool isEating;
     private float hungerTimeout;
 
@@ -30,6 +43,7 @@ public class Furnace : MonoBehaviour
     {
         currentSpeed = baseSpeed;
         ui.SetCount(hunger, maxHunger);
+        sfxMoveHandle = AudioManager.PlayAttached(sfxMove, transform);
     }
 
     void Update()
@@ -52,6 +66,13 @@ public class Furnace : MonoBehaviour
 
         float step = maxHunger / (float)speedCount;
         currentSpeedNum = Mathf.FloorToInt(hunger / step);
+
+        if(prevSpeedNum != currentSpeedNum)
+        {
+            if(prevSpeedNum < currentSpeedNum) AudioManager.PlayAt(sfxNextLevel, transform.position);
+            prevSpeedNum = currentSpeedNum;
+        }
+
         currentSpeed = baseSpeed + baseSpeed * speedMultiplier * currentSpeedNum;
     }
 
@@ -64,9 +85,9 @@ public class Furnace : MonoBehaviour
             //tree.Burn();
             tree.Fall(transform.forward);
         }
-        else if (other.CompareTag("Balk"))
+        else if (other.CompareTag("BalkCollider"))
         {
-            var balk = other.GetComponentInParent<TreeBalk>();
+            var balk = other.GetComponent<TreeLog>();
             balk.Burn(other);
         }
         else if (other.CompareTag("Player"))
@@ -92,29 +113,15 @@ public class Furnace : MonoBehaviour
         }
     }
 
-    public void OnHeatZoneEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            var player = other.GetComponent<PlayerHealth>();
-            player.Heat(true);
-        }
-    }
-
-    public void OnHeatZoneExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            var player = other.GetComponent<PlayerHealth>();
-            player.Heat(false);
-        }
-    }
-
     IEnumerator Eat(UnloadZone hub)
     {
+        if(sfxMoveHandle != null) sfxMoveHandle.Stop();
         isEating = true;
         yield return new WaitForSeconds(1);
+        sfxEatingHandle = AudioManager.PlayAttached(sfxEating, transform);
         hub.Unload(this);
+        animator.SetBool("Eat", true);
+        StopFX();
     }
 
     public void AddBalk(UnloadZone unloadZone)
@@ -134,5 +141,25 @@ public class Furnace : MonoBehaviour
     {
         isEating = false;
         hungerTimeout = hungerZeroTimeout;
+        animator.SetBool("Eat", false);
+        StartFX();
+        if (sfxEatingHandle != null) sfxEatingHandle.Stop();
+        sfxMoveHandle = AudioManager.PlayAttached(AudioType.TreeBurn, transform);
+    }
+
+    void StartFX()
+    {
+        for (int i = 0; i < dust.Length; i++)
+        {
+            dust[i].Play();
+        }
+    }
+
+    void StopFX()
+    {
+        for (int i = 0; i < dust.Length; i++)
+        {
+            dust[i].Stop();
+        }
     }
 }

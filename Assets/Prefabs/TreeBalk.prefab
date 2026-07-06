@@ -50,18 +50,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 708bba59eb42eee468fe2b44bd59bc78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Barks:
-  - {fileID: 6657142357239006343}
-  - {fileID: 3710218134409564697}
-  - {fileID: 3710218133327837722}
-  - {fileID: 3710218133219923990}
-  - {fileID: 4989876816840201264}
-  - {fileID: 3561935853685689071}
+  barks:
+  - {fileID: 8310401061405438959}
+  - {fileID: 2038940631536526705}
+  - {fileID: 2038940632602266994}
+  - {fileID: 2038940632220757886}
+  - {fileID: 7640647626456441688}
+  - {fileID: 2186528159522913671}
   forceX: 150
   forceY: 20
   breakPropability: 0.3
   poof: {fileID: 5673886561815609921, guid: 20f192225b24ac344b5ffcbaf88adb40, type: 3}
-  burnMaterial: {fileID: 2100000, guid: e1708b4dc2378ac4ab77f4a629441086, type: 2}
 --- !u!1001 &3250252666424298033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,11 +139,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1526069933173064008, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
   m_PrefabInstance: {fileID: 3250252666424298033}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &6657142357239006343 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 8176808661516848822, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
+--- !u!114 &8310401061405438959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6795736298484480478, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
   m_PrefabInstance: {fileID: 3250252666424298033}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b21ae3628b3354c979ca93b3f8c548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreeLog
 --- !u!1001 &3766775794416425606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -227,11 +232,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1526069933173064008, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
   m_PrefabInstance: {fileID: 3766775794416425606}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &4989876816840201264 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 8176808661516848822, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
+--- !u!114 &7640647626456441688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6795736298484480478, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
   m_PrefabInstance: {fileID: 3766775794416425606}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b21ae3628b3354c979ca93b3f8c548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreeLog
 --- !u!1001 &4618254426898252889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -309,11 +320,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
---- !u!54 &3561935853685689071 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 8176808661516848822, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
+--- !u!114 &2186528159522913671 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6795736298484480478, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
   m_PrefabInstance: {fileID: 4618254426898252889}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b21ae3628b3354c979ca93b3f8c548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreeLog
 --- !u!4 &6141473285445649681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1526069933173064008, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
@@ -392,11 +409,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
---- !u!54 &3710218133327837722 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 8176808661516848822, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
+--- !u!114 &2038940632602266994 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6795736298484480478, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
   m_PrefabInstance: {fileID: 4757080607035192492}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b21ae3628b3354c979ca93b3f8c548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreeLog
 --- !u!4 &6280616161471378916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1526069933173064008, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
@@ -479,11 +502,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
---- !u!54 &3710218133219923990 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 8176808661516848822, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
+--- !u!114 &2038940632220757886 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6795736298484480478, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
   m_PrefabInstance: {fileID: 4757080607463691936}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b21ae3628b3354c979ca93b3f8c548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreeLog
 --- !u!4 &6280616161602869224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1526069933173064008, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
@@ -562,11 +591,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
---- !u!54 &3710218134409564697 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 8176808661516848822, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
+--- !u!114 &2038940631536526705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6795736298484480478, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}
   m_PrefabInstance: {fileID: 4757080608117447855}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b21ae3628b3354c979ca93b3f8c548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TreeLog
 --- !u!4 &6280616160405888487 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1526069933173064008, guid: da2eef48e7c40b94abaf295be03f7f47, type: 3}

@@ -13,6 +13,7 @@ public class Vegetable
 public class TreeSpawner : MonoBehaviour
 {
     [SerializeField] Vegetable[] vegetables;
+    [SerializeField] Vegetable coins;
     [SerializeField] Bounds bounds;
     [SerializeField] LayerMask raycastMask;
     [SerializeField] Vector3 extends = Vector3.one * 0.5f;
@@ -23,11 +24,18 @@ public class TreeSpawner : MonoBehaviour
 
     void Start()
     {
-        results = new Collider[5];
+        results = new Collider[1];
+
         for (int i = 0; i < vegetables.Length; i++)
         {
-            Create(vegetables[i]);
+            var vegetable = vegetables[i];
+            for (int j = 0; j < vegetable.count; j++)
+            {
+                CreateVegetable(vegetable);
+            }
         }
+
+        CreateVegetable(coins);
 
         Events.GetCoins += GiveBonus;
     }
@@ -37,57 +45,45 @@ public class TreeSpawner : MonoBehaviour
         Events.GetCoins -= GiveBonus;
     }
 
-    void Create(Vegetable vegetable)
+    void CreateVegetable(Vegetable vegetable)
     {
-        //Vector3 extends = Vector3.one * density;
-        for (int i = 0; i < vegetable.count; i++)
+        // 1. Создаем объект в случайной позиции
+        float randomX = Random.value * bounds.size.x;
+        float randomZ = Random.value * bounds.size.z;
+        Vector3 randomPos = new Vector3(transform.position.x + randomX - bounds.extents.x, bounds.extents.y, transform.position.z + randomZ - bounds.extents.z);
+
+        Debug.DrawRay(randomPos, -Vector3.up, Color.yellow, 10);
+
+        if (Physics.OverlapBoxNonAlloc(randomPos, extends, results, Quaternion.identity, raycastMask) > 0) return;
+
+        randomPos.y = 0;
+        GameObject tree = Instantiate(vegetable.prefab, randomPos, Quaternion.identity);
+
+        float randomScale = Random.Range(minScale, maxScale);
+        Vector3 scaleVec = new Vector3(randomScale, randomScale, randomScale);
+        tree.transform.localScale = scaleVec;
+
+        RotateRandom(tree);
+
+        if (vegetable.randomizeColor)
         {
-            // 1. Создаем объект в случайной позиции
-            float randomX = Random.value * bounds.size.x;
-            float randomZ = Random.value * bounds.size.z;
-            Vector3 randomPos = new Vector3(transform.position.x + randomX - bounds.extents.x, bounds.extents.y, transform.position.z + randomZ - bounds.extents.z);
-            //if (Physics.Raycast(randomPos, -Vector3.up * bounds.extents.y, out RaycastHit hit))
-            //{
-            //    randomPos.y = hit.point.y;
-            //}
-            //else
-            //{
-            //    randomPos.y = 0;
-            //}
+            MaterialPropertyBlock props = new MaterialPropertyBlock();
 
-            Debug.DrawRay(randomPos, -Vector3.up, Color.yellow, 10);
+            Color randomColor = new Color(
+                Random.Range(0.7f, 1.0f), // R - Красный
+                Random.Range(0.8f, 1.0f), // G - Зеленый (делаем его ярче)
+                Random.Range(0.5f, 0.8f), // B - Синий
+                1f
+            );
 
-            if (Physics.OverlapBoxNonAlloc(randomPos, extends, results, Quaternion.identity, raycastMask) > 0) continue;
+            props.SetColor("_Color", randomColor); // Стандартный URP Lit Shader
 
-            randomPos.y = 0;
-            GameObject tree = Instantiate(vegetable.prefab, randomPos, Quaternion.identity);
-
-            float randomScale = Random.Range(minScale, maxScale);
-            Vector3 scaleVec = new Vector3(randomScale, randomScale, randomScale);
-            tree.transform.localScale = scaleVec;
-
-            RotateRandom(tree);
-
-            if (vegetable.randomizeColor)
-            {
-                MaterialPropertyBlock props = new MaterialPropertyBlock();
-
-                Color randomColor = new Color(
-                    Random.Range(0.7f, 1.0f), // R - Красный
-                    Random.Range(0.8f, 1.0f), // G - Зеленый (делаем его ярче)
-                    Random.Range(0.5f, 0.8f), // B - Синий
-                    1f
-                );
-
-                props.SetColor("_Color", randomColor); // Стандартный URP Lit Shader
-
-                // Получаем рендерер и применяем блок
-                Renderer rend = tree.transform.GetChild(1).GetComponent<Renderer>();
-                rend.SetPropertyBlock(props);
-            }
-
-            tree.transform.SetParent(transform);
+            // Получаем рендерер и применяем блок
+            Renderer rend = tree.transform.GetChild(1).GetComponent<Renderer>();
+            rend.SetPropertyBlock(props);
         }
+
+        tree.transform.SetParent(transform);
     }
 
     void RotateRandom(GameObject obj)
@@ -122,7 +118,7 @@ public class TreeSpawner : MonoBehaviour
             availableDirections.RemoveAt(dirIndex);
 
             // Создаем объект
-            GameObject obj = Instantiate(vegetables[3].prefab, pos, Quaternion.identity);
+            GameObject obj = Instantiate(coins.prefab, pos, Quaternion.identity);
             obj.GetComponent<Collider>().enabled = false;
 
             // Запускаем анимацию полета по дуге

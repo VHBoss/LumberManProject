@@ -8,25 +8,31 @@ public class UnloadZone : MonoBehaviour
     [SerializeField] float loadTime = 0.1f;
     [SerializeField] int maxCount = 30;
     [SerializeField] Transform target;
-    [SerializeField] Transform progress;
     [SerializeField] ParticleSystem poof;
+    [SerializeField] Transform root;
+    [SerializeField] int startCount;
+
+    [Header("SFX")]
+    [SerializeField] AudioType sfxDropCoins;
 
     private BalkCollector balkCollector;
     private Furnace furnace;
     private int balkCount;
     private List<GameObject> balks = new List<GameObject>();
     private bool isUplolading;
-    private bool isFull;
+    private int visualCount;
 
     void Start()
     {
-        UpdateUI(0);
+        visualCount = root.childCount;
+        UpdateUI(startCount);
+        UpdateVisualBarks(startCount);
     }
 
     void OnTriggerEnter(Collider other)
     {
         //Debug.Log("UnloadZone " + other.name + " | " + other.tag, other.gameObject);
-        if (isUplolading || isFull) return;
+        if (isUplolading || balkCount >= maxCount) return;
 
         if (other.CompareTag("Player"))
         {
@@ -44,7 +50,6 @@ public class UnloadZone : MonoBehaviour
     {
         if (balkCount >= maxCount)
         {
-            isFull = true;
             GiveBonus();
             Cancel();
             return;
@@ -58,7 +63,7 @@ public class UnloadZone : MonoBehaviour
             balk.transform.SetParent(null);
             balk.SetActive(true);
 
-            float delta = 0.4f/maxCount;
+            //float delta = 0.4f/maxCount;
 
             DOTween.Sequence()
                 .Append(balk.transform.DOMove(target.position, 0.3f))
@@ -67,9 +72,9 @@ public class UnloadZone : MonoBehaviour
                 {
                     balks.Add(balk);
                     balk.SetActive(false);
-                    //Destroy(balk.gameObject);
-                    progress.localPosition = new Vector3(0, -0.4f + delta * balkCount, 0);
-                    //progress.Translate(new Vector3(0, delta, 0));
+                    //TODO
+                    //progress.localPosition = new Vector3(0, -0.4f + delta * balkCount, 0);
+                    UpdateVisualBarks(balkCount);
                 });
         }
         else
@@ -81,6 +86,7 @@ public class UnloadZone : MonoBehaviour
     [ContextMenu("GiveBonus")]
     void GiveBonus()
     {
+        AudioManager.PlayAt(sfxDropCoins, transform.position);
         poof.Play();
         Events.GetCoins?.Invoke(transform.position);
     }
@@ -124,7 +130,7 @@ public class UnloadZone : MonoBehaviour
         GameObject balk = GetBalk();
         if (balk != null)
         {
-            float delta = 0.4f / maxCount;
+            //float delta = 0.4f / maxCount;
 
             DOTween.Sequence()
                 .Append(balk.transform.DOMove(furnace.transform.position, 0.3f))
@@ -133,8 +139,23 @@ public class UnloadZone : MonoBehaviour
                 {
                     furnace.AddBalk(this);
                     Destroy(balk.gameObject);
-                    progress.localPosition = new Vector3(0, -0.4f + delta * balkCount, 0);
+                    //TODO
+                    //progress.localPosition = new Vector3(0, -0.4f + delta * balkCount, 0);
+                    UpdateVisualBarks(balkCount);
                 });
+        }
+    }
+
+    void UpdateVisualBarks(int count)
+    {
+        // Рассчитываем сколько бревен должно отображаться визуально
+        int visualBarkCount = Mathf.RoundToInt((float)count / maxCount * visualCount);
+        visualBarkCount = Mathf.Clamp(visualBarkCount, 0, visualCount);
+
+        // Включаем/выключаем дочерние объекты
+        for (int i = 0; i < root.childCount; i++)
+        {
+            root.GetChild(i).gameObject.SetActive(i < visualBarkCount);
         }
     }
 

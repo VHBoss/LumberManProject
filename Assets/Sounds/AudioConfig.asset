@@ -1,0 +1,240 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6210839b3980dab47a1bc703da3e070e, type: 3}
+  m_Name: AudioConfig
+  m_EditorClassIdentifier: 
+  audioData:
+  - type: 1
+    playMode: 1
+    clip: {fileID: 8300000, guid: e25202ec76eca2b4cb9c151b9a9bb3fc, type: 3}
+    clips:
+    - {fileID: 8300000, guid: 5472fedf3fa4fa345bd282e7930be732, type: 3}
+    - {fileID: 8300000, guid: e25202ec76eca2b4cb9c151b9a9bb3fc, type: 3}
+    loop: 0
+    sfx3D: 0
+    volume: 0.152
+    pitch: 1
+    mute: 0
+  - type: 10
+    playMode: 1
+    clip: {fileID: 8300000, guid: 08fc0eb461a24bb4e9fdee54b601353c, type: 3}
+    clips:
+    - {fileID: 8300000, guid: 2a15bf8c63d83d544b99617a29135ac0, type: 3}
+    - {fileID: 8300000, guid: 84a06ef89e0e03d48a60f0b25eb0a61c, type: 3}
+    - {fileID: 8300000, guid: 6ed044a714dcae946a96068cd7128e5f, type: 3}
+    - {fileID: 8300000, guid: 08fc0eb461a24bb4e9fdee54b601353c, type: 3}
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 11
+    playMode: 1
+    clip: {fileID: 8300000, guid: dc9386e97e9ef5540a6adbe8400f53c9, type: 3}
+    clips:
+    - {fileID: 8300000, guid: dc9386e97e9ef5540a6adbe8400f53c9, type: 3}
+    - {fileID: 8300000, guid: 4f729f1f28de0e94cb930507a9ccdde7, type: 3}
+    - {fileID: 8300000, guid: 90f8f8814617b2c46ab42cc953898dfb, type: 3}
+    loop: 0
+    sfx3D: 1
+    volume: 0.661
+    pitch: 1
+    mute: 0
+  - type: 12
+    playMode: 0
+    clip: {fileID: 8300000, guid: 3f839a5a0f0145b469def7409ccbd775, type: 3}
+    clips: []
+    loop: 1
+    sfx3D: 1
+    volume: 0.42
+    pitch: 1
+    mute: 0
+  - type: 21
+    playMode: 0
+    clip: {fileID: 8300000, guid: b60374ffff99a7d49915b8bd414b54c3, type: 3}
+    clips: []
+    loop: 0
+    sfx3D: 1
+    volume: 0.42
+    pitch: 1
+    mute: 0
+  - type: 22
+    playMode: 0
+    clip: {fileID: 8300000, guid: b96f65a83d5b24d4098a065dd8f65bad, type: 3}
+    clips: []
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 23
+    playMode: 1
+    clip: {fileID: 8300000, guid: dca9ee7f550c4fe4b9f0d303d9d58e87, type: 3}
+    clips:
+    - {fileID: 8300000, guid: dca9ee7f550c4fe4b9f0d303d9d58e87, type: 3}
+    - {fileID: 8300000, guid: e6b7f18a5a6a3604481e0108592b4231, type: 3}
+    - {fileID: 8300000, guid: 614f9cd770f0e444e8b7bd9c797a9862, type: 3}
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 31
+    playMode: 0
+    clip: {fileID: 8300000, guid: d5de47e44118ca24eafcaa25f707a077, type: 3}
+    clips: []
+    loop: 1
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 32
+    playMode: 1
+    clip: {fileID: 8300000, guid: 396093a20b1cf2945b31e04f88984888, type: 3}
+    clips:
+    - {fileID: 8300000, guid: 510348c8abc8a3945a10c96a21050cfb, type: 3}
+    - {fileID: 8300000, guid: 396093a20b1cf2945b31e04f88984888, type: 3}
+    loop: 1
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 41
+    playMode: 0
+    clip: {fileID: 8300000, guid: e2a1fb1113037754880b346acf6fddb1, type: 3}
+    clips: []
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 42
+    playMode: 0
+    clip: {fileID: 8300000, guid: 40639d459bb412542901f0cc7415678d, type: 3}
+    clips: []
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 43
+    playMode: 0
+    clip: {fileID: 8300000, guid: 2ab02722036613c459ffd181d19ab211, type: 3}
+    clips: []
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 51
+    playMode: 0
+    clip: {fileID: 8300000, guid: b34a96aec2e11da479b33694ad480bb0, type: 3}
+    clips: []
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 3
+    playMode: 0
+    clip: {fileID: 8300000, guid: e7e9d45f25f4106429fbfab713a2e1ed, type: 3}
+    clips: []
+    loop: 1
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 4
+    playMode: 1
+    clip: {fileID: 8300000, guid: cfcf174cc61092d44941b88fb16b7a13, type: 3}
+    clips:
+    - {fileID: 8300000, guid: 32158bfe6abc06b4ba34e53d31cdb129, type: 3}
+    - {fileID: 8300000, guid: 238ce8f12c87ea044a4b7c8daec9c711, type: 3}
+    - {fileID: 8300000, guid: daeb9075135ae2143a3d2c8dcaeba32a, type: 3}
+    - {fileID: 8300000, guid: d4737f6692730e74095a9f2adaa6f8d4, type: 3}
+    - {fileID: 8300000, guid: 339471bfb3906284ca18ff9047f5259f, type: 3}
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 5
+    playMode: 1
+    clip: {fileID: 8300000, guid: cfcf174cc61092d44941b88fb16b7a13, type: 3}
+    clips:
+    - {fileID: 8300000, guid: c4d7171c88a5a3f47ad87c407c3b35d8, type: 3}
+    - {fileID: 8300000, guid: 94cc9ae1609d341428c10f1f1bb457a2, type: 3}
+    - {fileID: 8300000, guid: 34abc89c5d4e8e34b9cf589ebaf96507, type: 3}
+    - {fileID: 8300000, guid: 55a10810958068e4eb127d143051a98d, type: 3}
+    loop: 0
+    sfx3D: 1
+    volume: 0.391
+    pitch: 1
+    mute: 0
+  - type: 6
+    playMode: 0
+    clip: {fileID: 8300000, guid: 2d69e47a25e89ef47a8004c03e966f46, type: 3}
+    clips: []
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 13
+    playMode: 1
+    clip: {fileID: 8300000, guid: cfcf174cc61092d44941b88fb16b7a13, type: 3}
+    clips:
+    - {fileID: 8300000, guid: 04d10869124ee53409f9354a4cda0385, type: 3}
+    - {fileID: 8300000, guid: 81026d58e2f0bd74f8251d18521be1cd, type: 3}
+    - {fileID: 8300000, guid: 263ce4bb886fb484b8d82b08e9c652dc, type: 3}
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 33
+    playMode: 0
+    clip: {fileID: 8300000, guid: 9ba3657167bdd3c409159c14df2ed6b8, type: 3}
+    clips: []
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 34
+    playMode: 0
+    clip: {fileID: 8300000, guid: b527b97142ea5494d8870311a7a75a70, type: 3}
+    clips: []
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 52
+    playMode: 0
+    clip: {fileID: 8300000, guid: 59add1031b103ba49bddad9b1551bcfa, type: 3}
+    clips: []
+    loop: 0
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  - type: 61
+    playMode: 0
+    clip: {fileID: 8300000, guid: 849702266b8db1c49bab677ef1679ae9, type: 3}
+    clips: []
+    loop: 1
+    sfx3D: 1
+    volume: 1
+    pitch: 1
+    mute: 0
+  masterVolume: 1
