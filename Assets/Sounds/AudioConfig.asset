@@ -50,7 +50,7 @@ MonoBehaviour:
     pitch: 1
     mute: 0
   - type: 12
-    playMode: 0
+    playMode: 1
     clip: {fileID: 8300000, guid: 3f839a5a0f0145b469def7409ccbd775, type: 3}
     clips: []
     loop: 1
@@ -150,8 +150,8 @@ MonoBehaviour:
     clips: []
     loop: 1
     sfx3D: 1
-    volume: 1
-    pitch: 1
+    volume: 0
+    pitch: 1.24
     mute: 0
   - type: 4
     playMode: 1

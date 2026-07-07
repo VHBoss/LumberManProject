@@ -40,13 +40,13 @@ public class AudioPool : MonoBehaviour
     {
 #if UNITY_EDITOR
         if (debugLog)
-            Debug.Log($"Playing audio {data.type}");
+            Debug.Log($"Playing audio {data.type}, volume: {data.volume}");
 #endif
 
         PooledAudioSource source = GetFreeSource();
 
         active.Add(source);
-        source.Play(data.GetClip(), position, data.sfx3D, data.mute ? 0f : data.volume);
+        source.Play(data, position);
 
         return source;
     }
@@ -55,7 +55,7 @@ public class AudioPool : MonoBehaviour
     {
 #if UNITY_EDITOR
         if (debugLog)
-            Debug.Log($"Playing audio {data.type}");
+            Debug.Log($"Playing audio {data.type}, volume: {data.volume}");
 #endif
 
         var source = GetFreeSource();
@@ -65,7 +65,7 @@ public class AudioPool : MonoBehaviour
         source.transform.SetParent(target, false);
         source.transform.localPosition = Vector3.zero;
 
-        source.Play(data.GetClip(), target.position, data.sfx3D, data.mute ? 0f : data.volume);
+        source.Play(data, target.position);
 
         return source;
     }

@@ -26,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
     public float burnTimer;
     private float currentDamage;
     private PooledAudioSource sfxBurnHandler;
+    private float sfxBurnVolume;
 
     void Start()
     {
@@ -43,10 +44,14 @@ public class PlayerHealth : MonoBehaviour
 
             if (sqr_distance <= maxDistance)
             {
-                if(sfxBurnHandler == null) sfxBurnHandler = AudioManager.PlayAt(sfxBurn, transform.position);
+                if (sfxBurnHandler == null)
+                {
+                    sfxBurnHandler = AudioManager.PlayAt(sfxBurn, transform.position);
+                    sfxBurnVolume = sfxBurnHandler.Source.volume;
+                }
                 burnTimer += Time.deltaTime;
                 burnTimer = Mathf.Clamp01(burnTimer);
-                sfxBurnHandler.Source.volume = burnTimer;
+                sfxBurnHandler.Source.volume = sfxBurnVolume * burnTimer;
 
                 // Нанесение урона пропорционально расстоянию
                 float danger = 1f - Mathf.Clamp01(sqr_distance / maxDistance);
@@ -137,7 +142,7 @@ public class PlayerHealth : MonoBehaviour
         burnTimer -= Time.deltaTime;
         burnTimer = Mathf.Clamp01(burnTimer);
 
-        sfxBurnHandler.Source.volume = burnTimer;
+        sfxBurnHandler.Source.volume = sfxBurnVolume * burnTimer;
 
         if (burnTimer <= 0f)
         {

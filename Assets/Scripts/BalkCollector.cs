@@ -12,14 +12,20 @@ public class BalkCollector : MonoBehaviour
     [Header("SFX")]
     [SerializeField] AudioType sfxTakeBalk;
     [SerializeField] AudioType sfxDepositBalk;
+    [SerializeField] AudioType sfxFullBag;
 
     public int BalkCount => balks.Count;
 
     private List<GameObject> balks = new List<GameObject>();
 
+    private AudioSource bagAudioSource;
+    private AudioData bagAudioData;
+
     void Start()
     {
         UpdateUI(0);
+        bagAudioSource = gameObject.AddComponent<AudioSource>();
+        bagAudioData = AudioManager.GetAudioData(sfxFullBag);
     }
 
     void OnTriggerEnter(Collider other)
@@ -36,6 +42,10 @@ public class BalkCollector : MonoBehaviour
 
                 other.enabled = false;
                 Collect(other.transform.parent);
+            }
+            else
+            {
+                PlayAudio();
             }
         }
     }
@@ -80,5 +90,17 @@ public class BalkCollector : MonoBehaviour
             return balk;
         }
         return null;
+    }
+
+    void PlayAudio()
+    {
+        if(bagAudioSource.isPlaying) return;
+
+        bagAudioSource.spatialBlend = bagAudioData.sfx3D ? 1f : 0f;
+        bagAudioSource.volume = bagAudioData.mute ? 0f : bagAudioData.volume;
+        bagAudioSource.pitch = bagAudioData.pitch;
+        bagAudioSource.clip = bagAudioData.GetClip();
+
+        bagAudioSource.Play();
     }
 }

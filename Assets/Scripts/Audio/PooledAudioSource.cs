@@ -14,14 +14,15 @@ public class PooledAudioSource : MonoBehaviour
         Source.playOnAwake = false;
     }
 
-    public void Play(AudioClip clip, Vector3 position, bool spatial, float volume = 1f, float pitch = 1f)
+    public void Play(AudioData data, Vector3 position)
     {
         transform.position = position;
 
-        Source.spatialBlend = spatial ? 1f : 0f;
-        Source.volume = volume;
-        Source.pitch = pitch;
-        Source.clip = clip;
+        Source.spatialBlend = data.sfx3D ? 1f : 0f;
+        Source.volume = data.mute ? 0f : data.volume;
+        Source.pitch = data.pitch;
+        Source.loop = data.loop;
+        Source.clip = data.GetClip();
 
         Source.Play();
     }
