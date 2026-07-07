@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum AudioType
 {
+    None = 0,
     [AudioCategory("Player")] Axe = 1,
     //[AudioCategory("Player")] AxeHit = 2,
     [AudioCategory("Player")] PlayerDamage = 3,

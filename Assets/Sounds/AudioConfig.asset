@@ -179,7 +179,7 @@ MonoBehaviour:
     sfx3D: 1
     volume: 0.391
     pitch: 1
-    mute: 0
+    mute: 1
   - type: 6
     playMode: 0
     clip: {fileID: 8300000, guid: 2d69e47a25e89ef47a8004c03e966f46, type: 3}
@@ -233,8 +233,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 849702266b8db1c49bab677ef1679ae9, type: 3}
     clips: []
     loop: 1
-    sfx3D: 1
-    volume: 1
+    sfx3D: 0
+    volume: 0.247
     pitch: 1
     mute: 0
   masterVolume: 1
