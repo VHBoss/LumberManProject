@@ -4898,10 +4898,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreeSpawner
   vegetables:
   - prefab: {fileID: 3485243894886970455, guid: 7a3c274a95bc40d4d833869a26eef5f0, type: 3}
-    count: 60
+    count: 10
     randomizeColor: 1
   - prefab: {fileID: 9025306648437834203, guid: 1c3bd6d30988be04aaa856e07906ac7e, type: 3}
-    count: 50
+    count: 5
     randomizeColor: 1
   - prefab: {fileID: 2945881967290563564, guid: c17eaee8be5bbec4f99085d5f0dac724, type: 3}
     count: 0
@@ -6860,10 +6860,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreeSpawner
   vegetables:
   - prefab: {fileID: 3485243894886970455, guid: 7a3c274a95bc40d4d833869a26eef5f0, type: 3}
-    count: 60
+    count: 5
     randomizeColor: 1
   - prefab: {fileID: 9025306648437834203, guid: 1c3bd6d30988be04aaa856e07906ac7e, type: 3}
-    count: 50
+    count: 10
     randomizeColor: 1
   - prefab: {fileID: 2945881967290563564, guid: c17eaee8be5bbec4f99085d5f0dac724, type: 3}
     count: 0
@@ -8853,10 +8853,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreeSpawner
   vegetables:
   - prefab: {fileID: 3485243894886970455, guid: 7a3c274a95bc40d4d833869a26eef5f0, type: 3}
-    count: 60
+    count: 15
     randomizeColor: 1
   - prefab: {fileID: 9025306648437834203, guid: 1c3bd6d30988be04aaa856e07906ac7e, type: 3}
-    count: 50
+    count: 5
     randomizeColor: 1
   - prefab: {fileID: 2945881967290563564, guid: c17eaee8be5bbec4f99085d5f0dac724, type: 3}
     count: 0
@@ -11615,10 +11615,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreeSpawner
   vegetables:
   - prefab: {fileID: 3485243894886970455, guid: 7a3c274a95bc40d4d833869a26eef5f0, type: 3}
-    count: 40
+    count: 25
     randomizeColor: 1
   - prefab: {fileID: 9025306648437834203, guid: 1c3bd6d30988be04aaa856e07906ac7e, type: 3}
-    count: 40
+    count: 15
     randomizeColor: 1
   - prefab: {fileID: 2945881967290563564, guid: c17eaee8be5bbec4f99085d5f0dac724, type: 3}
     count: 0
