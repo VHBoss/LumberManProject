@@ -2909,7 +2909,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2844558806410921882, guid: 2cbf1bb78490b294da66337c3f2bd1aa, type: 3}
       propertyPath: maxCount
-      value: 12
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4706281477963926013, guid: 2cbf1bb78490b294da66337c3f2bd1aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6427,8 +6427,6 @@ Transform:
   - {fileID: 932837609}
   - {fileID: 1362794542}
   - {fileID: 650777767}
-  - {fileID: 525418559}
-  - {fileID: 1059329305}
   - {fileID: 1250758017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6693,10 +6691,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreeSpawner
   vegetables:
   - prefab: {fileID: 3485243894886970455, guid: 7a3c274a95bc40d4d833869a26eef5f0, type: 3}
-    count: 70
+    count: 60
     randomizeColor: 1
   - prefab: {fileID: 9025306648437834203, guid: 1c3bd6d30988be04aaa856e07906ac7e, type: 3}
-    count: 60
+    count: 50
     randomizeColor: 1
   - prefab: {fileID: 2945881967290563564, guid: c17eaee8be5bbec4f99085d5f0dac724, type: 3}
     count: 0
@@ -6810,76 +6808,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8e5d2849257f02247ba6de2b64297786, type: 3}
   m_PrefabInstance: {fileID: 516063160}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &525418558
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 525418559}
-  - component: {fileID: 525418560}
-  m_Layer: 0
-  m_Name: Spawner (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &525418559
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525418558}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.45, y: 0, z: 0.76}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 478107486}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &525418560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525418558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c416262ba06af541b44f4d688acaf04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TreeSpawner
-  vegetables:
-  - prefab: {fileID: 3485243894886970455, guid: 7a3c274a95bc40d4d833869a26eef5f0, type: 3}
-    count: 60
-    randomizeColor: 1
-  - prefab: {fileID: 9025306648437834203, guid: 1c3bd6d30988be04aaa856e07906ac7e, type: 3}
-    count: 50
-    randomizeColor: 1
-  - prefab: {fileID: 2945881967290563564, guid: c17eaee8be5bbec4f99085d5f0dac724, type: 3}
-    count: 0
-    randomizeColor: 0
-  - prefab: {fileID: 748139928301724772, guid: 77379fedbc3e99c4f91c6daea44c56ad, type: 3}
-    count: 0
-    randomizeColor: 0
-  coins:
-    prefab: {fileID: 3803760153655541858, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
-    count: 50
-    randomizeColor: 0
-  bounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 1.19, y: 2.04, z: 0.99}
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 145
-  extends: {x: 0.5, y: 5, z: 0.5}
-  minScale: 0.6
-  maxScale: 0.8
 --- !u!1 &526393413
 GameObject:
   m_ObjectHideFlags: 0
@@ -11583,7 +11511,7 @@ Transform:
   m_GameObject: {fileID: 932837608}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.05, y: 0, z: -2.14}
+  m_LocalPosition: {x: -12.28, y: 0, z: -2.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11603,10 +11531,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TreeSpawner
   vegetables:
   - prefab: {fileID: 3485243894886970455, guid: 7a3c274a95bc40d4d833869a26eef5f0, type: 3}
-    count: 40
+    count: 60
     randomizeColor: 1
   - prefab: {fileID: 9025306648437834203, guid: 1c3bd6d30988be04aaa856e07906ac7e, type: 3}
-    count: 40
+    count: 50
     randomizeColor: 1
   - prefab: {fileID: 2945881967290563564, guid: c17eaee8be5bbec4f99085d5f0dac724, type: 3}
     count: 0
@@ -11620,7 +11548,7 @@ MonoBehaviour:
     randomizeColor: 0
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 2.54, y: 2.04, z: 3.39}
+    m_Extent: {x: 4.71, y: 2.04, z: 3.39}
   raycastMask:
     serializedVersion: 2
     m_Bits: 145
@@ -13056,76 +12984,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a3c274a95bc40d4d833869a26eef5f0, type: 3}
---- !u!1 &1059329304
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1059329305}
-  - component: {fileID: 1059329306}
-  m_Layer: 0
-  m_Name: Spawner (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1059329305
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059329304}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.97, y: 0, z: -3.35}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 478107486}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1059329306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059329304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c416262ba06af541b44f4d688acaf04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TreeSpawner
-  vegetables:
-  - prefab: {fileID: 3485243894886970455, guid: 7a3c274a95bc40d4d833869a26eef5f0, type: 3}
-    count: 60
-    randomizeColor: 1
-  - prefab: {fileID: 9025306648437834203, guid: 1c3bd6d30988be04aaa856e07906ac7e, type: 3}
-    count: 50
-    randomizeColor: 1
-  - prefab: {fileID: 2945881967290563564, guid: c17eaee8be5bbec4f99085d5f0dac724, type: 3}
-    count: 0
-    randomizeColor: 0
-  - prefab: {fileID: 748139928301724772, guid: 77379fedbc3e99c4f91c6daea44c56ad, type: 3}
-    count: 0
-    randomizeColor: 0
-  coins:
-    prefab: {fileID: 3803760153655541858, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
-    count: 50
-    randomizeColor: 0
-  bounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 3.19, y: 2.04, z: 2.05}
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 145
-  extends: {x: 0.5, y: 5, z: 0.5}
-  minScale: 0.6
-  maxScale: 0.8
 --- !u!1 &1062573245
 GameObject:
   m_ObjectHideFlags: 0
@@ -19489,7 +19347,6 @@ GameObject:
   - component: {fileID: 1446227451}
   - component: {fileID: 1446227454}
   - component: {fileID: 1446227453}
-  - component: {fileID: 1446227452}
   m_Layer: 0
   m_Name: GroundTex
   m_TagString: Untagged
@@ -19512,28 +19369,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 124830}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1446227452
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1446227450}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1446227453
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23842,7 +23677,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2647006390399286918, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.24
+      value: -17.14884
       objectReference: {fileID: 0}
     - target: {fileID: 2647006390399286918, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23850,7 +23685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2647006390399286918, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.56
+      value: 0.6392194
       objectReference: {fileID: 0}
     - target: {fileID: 2647006390399286918, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -26442,7 +26277,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2647006390399286918, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.1
+      value: -14.475944
       objectReference: {fileID: 0}
     - target: {fileID: 2647006390399286918, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -26450,7 +26285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2647006390399286918, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.52
+      value: -1.3986977
       objectReference: {fileID: 0}
     - target: {fileID: 2647006390399286918, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28155,7 +27990,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2844558806410921882, guid: 2cbf1bb78490b294da66337c3f2bd1aa, type: 3}
       propertyPath: maxCount
-      value: 24
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4706281477963926013, guid: 2cbf1bb78490b294da66337c3f2bd1aa, type: 3}
       propertyPath: m_LocalPosition.x

@@ -106,6 +106,8 @@ public class AudioSOEditor : Editor
             var element = audioData.GetArrayElementAtIndex(i);
             var type = (AudioType)element.FindPropertyRelative("type").intValue;
 
+            if (type == AudioType.None) continue;
+
             string category = GetCategory(type);
             if (!groups.TryGetValue(category, out var list))
             {
@@ -143,6 +145,11 @@ public class AudioSOEditor : Editor
     void DrawAudio(SerializedProperty property)
     {
         var type = property.FindPropertyRelative("type");
+
+        if (type.enumValueIndex < 0) SyncAudioDataWithEnum();
+        string n = type.enumDisplayNames[type.enumValueIndex];
+        if (n.Equals("None")) return;
+
         var playMode = property.FindPropertyRelative("playMode");
 
         var clip = property.FindPropertyRelative("clip");
@@ -156,7 +163,6 @@ public class AudioSOEditor : Editor
 
         EditorGUILayout.BeginHorizontal();
 
-        if (type.enumValueIndex < 0) SyncAudioDataWithEnum();
         // Èìÿ AudioType
         GUILayout.Label(type.enumDisplayNames[type.enumValueIndex],
             EditorStyles.boldLabel,
