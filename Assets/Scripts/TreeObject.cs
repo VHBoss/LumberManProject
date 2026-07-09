@@ -80,8 +80,8 @@ public class TreeObject : MonoBehaviour, IDamage
 
         int layer = collision.gameObject.layer;
 
-        //Debug.Log(gameObject.name + " collided with " + collision.collider.tag, collision.collider);
-        if (layer == 7 && m_Strength > 0)
+        //Debug.Log(gameObject.name + " collided with " + collision.collider.tag + " | " + layer, collision.collider);
+        if ((layer == 7 || layer == 8) && m_Strength > 0)
         {
             //Debug.Log("<color=yellow>COLLIDE</color>");
             m_Strength = 0;

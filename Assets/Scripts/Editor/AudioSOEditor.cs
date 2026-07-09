@@ -187,6 +187,12 @@ public class AudioSOEditor : Editor
         EditorGUILayout.PropertyField(property.FindPropertyRelative("volume"));
         EditorGUILayout.PropertyField(property.FindPropertyRelative("pitch"));
 
+        if (sfx3D.boolValue)
+        {
+            EditorGUILayout.PropertyField(property.FindPropertyRelative("minDistance"));
+            EditorGUILayout.PropertyField(property.FindPropertyRelative("maxDistance"));
+        }
+
         EditorGUILayout.EndVertical();
     }
 

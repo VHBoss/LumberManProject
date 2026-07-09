@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private Vector3 moveInput;
     private bool isDead;
+    private bool exitLevel;
 
     void Start()
     {
@@ -32,6 +33,13 @@ public class PlayerController : MonoBehaviour
 
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions.FindAction("Move");
+
+        Events.LevelExited += ExitLevel;
+    }
+
+    void OnDestroy()
+    {
+        Events.LevelExited -= ExitLevel;
     }
 
     void Update()
@@ -44,9 +52,19 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        Vector2 input = moveAction.ReadValue<Vector2>();
-        moveInput = new Vector3(-input.x, 0, -input.y);
-        moveInput = Vector3.ClampMagnitude(moveInput, 1f);
+        if (exitLevel)
+        {
+            // Движение вправо
+            moveInput = -Vector3.right;
+        }
+        else
+        {
+            Vector2 input = moveAction.ReadValue<Vector2>();
+            moveInput = new Vector3(-input.x, 0, -input.y);
+            moveInput = Vector3.ClampMagnitude(moveInput, 1f);
+
+            CharacterAnimator.SetBool(RunAnimation, input != Vector2.zero);
+        }
 
         if (moveInput != Vector3.zero)
         {
@@ -58,7 +76,10 @@ public class PlayerController : MonoBehaviour
         Vector3 finalMove = moveInput * moveSpeed + Vector3.up * playerVelocity.y;
         controller.Move(finalMove * Time.deltaTime);
 
-        CharacterAnimator.SetBool(RunAnimation, input != Vector2.zero);
+        if (exitLevel)
+        {
+            CharacterAnimator.SetBool(RunAnimation, true);
+        }
     }
 
     void Chop()
@@ -73,7 +94,6 @@ public class PlayerController : MonoBehaviour
         if (collider.CompareTag("Tree"))
         {
             m_CanChop = true;
-            //StartChop(true);
         }
     }
 
@@ -94,5 +114,10 @@ public class PlayerController : MonoBehaviour
 
         meshRenderer.material = burnMaterial;
         bagRenderer.material = burnMaterial;
+    }
+
+    void ExitLevel()
+    {
+        exitLevel = true;
     }
 }

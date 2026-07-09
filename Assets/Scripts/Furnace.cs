@@ -38,17 +38,25 @@ public class Furnace : MonoBehaviour
     private int prevSpeedNum;
     private bool isEating;
     private float hungerTimeout;
+    private bool exitLevel;
 
     void Start()
     {
         currentSpeed = baseSpeed;
         ui.SetCount(hunger, maxHunger);
         sfxMoveHandle = AudioManager.PlayAttached(sfxMove, transform);
+
+        Events.LevelExited += ExitLevel;
+    }
+
+    void OnDestroy()
+    {
+        Events.LevelExited -= ExitLevel;
     }
 
     void Update()
     {
-        if (isEating) return;
+        if (isEating || exitLevel) return;
 
         transform.position -= Vector3.right * currentSpeed * Time.deltaTime;
 
@@ -170,5 +178,10 @@ public class Furnace : MonoBehaviour
         {
             dust[i].Stop();
         }
+    }
+
+    void ExitLevel()
+    {
+        exitLevel = true;
     }
 }

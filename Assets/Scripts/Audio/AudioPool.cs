@@ -4,8 +4,6 @@ using UnityEngine;
 public class AudioPool : MonoBehaviour
 {
     [SerializeField] int poolSize = 20;
-    [SerializeField] int minDistance = 0;
-    [SerializeField] int maxDistance = 20;
 
     public bool debugLog;
 
@@ -20,8 +18,6 @@ public class AudioPool : MonoBehaviour
             go.transform.SetParent(transform);
 
             AudioSource source = go.AddComponent<AudioSource>();
-            source.minDistance = minDistance;
-            source.maxDistance = maxDistance;
             source.rolloffMode = AudioRolloffMode.Linear;
 
             PooledAudioSource pooled = go.AddComponent<PooledAudioSource>();

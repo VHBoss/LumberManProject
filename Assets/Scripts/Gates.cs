@@ -82,4 +82,12 @@ public class Gates : MonoBehaviour
             CancelInvoke();
         }
     }
+
+    public void OnExited(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Events.LevelExited?.Invoke();
+        }
+    }
 }

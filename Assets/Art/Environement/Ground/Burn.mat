@@ -63,6 +63,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaClippng: 0.5
+    - _ColorOffset: 0
     - _Edge: 0.1
     - _GlowWidth: 1.29
     - _NoiseScale: 0.11
@@ -73,7 +75,8 @@ Material:
     - _Tiling: 0.1
     m_Colors:
     - _Burn: {r: 0.27702448, g: 0.35849056, b: 0.25195798, a: 1}
-    - _BurnColor: {r: 1, g: 0.21404597, b: 0, a: 1}
+    - _BurnColor: {r: 1, g: 0.108900346, b: 0, a: 1}
+    - _BurnColorStart: {r: 1, g: 0.42948866, b: 0, a: 1}
     - _Center: {r: 9.56, g: 0, b: -0.66, a: 0}
     - _Normal: {r: 0.54243743, g: 1, b: 0.40094337, a: 1}
   m_BuildTextureStacks: []

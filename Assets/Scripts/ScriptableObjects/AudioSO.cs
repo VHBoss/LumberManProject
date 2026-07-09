@@ -75,6 +75,9 @@ public class AudioData
     [Range(-3f, 3f)]
     public float pitch = 1f;
 
+    public float minDistance = 0f;
+    public float maxDistance = 17f;
+
     public bool mute;
 
     public AudioClip GetClip()

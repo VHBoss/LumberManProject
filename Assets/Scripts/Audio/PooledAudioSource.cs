@@ -23,8 +23,13 @@ public class PooledAudioSource : MonoBehaviour
         Source.pitch = data.pitch;
         Source.loop = data.loop;
         Source.clip = data.GetClip();
+        if (data.sfx3D)
+        {
+            Source.minDistance = data.minDistance;
+            Source.maxDistance = data.maxDistance;
+        }
 
-        if(Source.clip != null) Source.Play();
+        if (Source.clip != null) Source.Play();
     }
 
     public void Stop()
