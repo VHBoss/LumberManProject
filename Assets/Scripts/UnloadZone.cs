@@ -49,22 +49,21 @@ public class UnloadZone : MonoBehaviour
 
     void StartProcess()
     {
-        if (balkCount == maxCount)
-        {
-            GiveBonus();
-            Cancel();
-            return;
-        }
-
         GameObject balk = balkCollector.GetBalk();
         if (balk != null)
         {
             balkCount++;
             ui.SetCount(balkCount, maxCount);
+
+            if (balkCount >= maxCount)
+            {
+                GiveBonus();
+                Cancel();
+                return;
+            }
+
             balk.transform.SetParent(null);
             balk.SetActive(true);
-
-            //float delta = 0.4f/maxCount;
 
             DOTween.Sequence()
                 .Append(balk.transform.DOMove(target.position, 0.3f))
@@ -73,8 +72,6 @@ public class UnloadZone : MonoBehaviour
                 {
                     balks.Add(balk);
                     balk.SetActive(false);
-                    //TODO
-                    //progress.localPosition = new Vector3(0, -0.4f + delta * balkCount, 0);
                     UpdateVisualBarks(balkCount);
                 });
         }
@@ -89,7 +86,6 @@ public class UnloadZone : MonoBehaviour
     {
         AudioManager.PlayAt(sfxDropCoins, transform.position);
         poof.Play();
-        //Events.GetCoins?.Invoke(transform.position);
         GiveBonus(transform.position);
     }
 
@@ -132,8 +128,6 @@ public class UnloadZone : MonoBehaviour
         GameObject balk = GetBalk();
         if (balk != null)
         {
-            //float delta = 0.4f / maxCount;
-
             DOTween.Sequence()
                 .Append(balk.transform.DOMove(furnace.transform.position, 0.3f))
                 .Join(balk.transform.DOScale(0.8f, 0.3f))
@@ -141,8 +135,6 @@ public class UnloadZone : MonoBehaviour
                 {
                     furnace.AddBalk(this);
                     Destroy(balk.gameObject);
-                    //TODO
-                    //progress.localPosition = new Vector3(0, -0.4f + delta * balkCount, 0);
                     UpdateVisualBarks(balkCount);
                 });
         }
