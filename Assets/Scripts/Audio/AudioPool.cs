@@ -44,6 +44,8 @@ public class AudioPool : MonoBehaviour
             Debug.Log($"Playing audio {data.type}, volume: {data.volume}");
 #endif
 
+        if(data.mute) return null;
+
         PooledAudioSource source = GetFreeSource();
 
         active.Add(source);
@@ -58,6 +60,8 @@ public class AudioPool : MonoBehaviour
         if (debugLog)
             Debug.Log($"Playing audio {data.type}, volume: {data.volume}");
 #endif
+
+        if (data.mute) return null;
 
         var source = GetFreeSource();
 

@@ -49,6 +49,17 @@ public class AudioSOEditor : Editor
             .Cast<AudioType>()
             .ToList();
 
+        for (int i = audioData.arraySize - 1; i >= 0; i--)
+        {
+            var element = audioData.GetArrayElementAtIndex(i);
+            var type = (AudioType)element.FindPropertyRelative("type").intValue;
+
+            if (!allTypes.Contains(type))
+            {
+                audioData.DeleteArrayElementAtIndex(i);
+            }
+        }
+
         // Получаем существующие типы из audioData
         var existingTypes = new HashSet<AudioType>();
         for (int i = 0; i < audioData.arraySize; i++)
@@ -145,6 +156,7 @@ public class AudioSOEditor : Editor
 
         EditorGUILayout.BeginHorizontal();
 
+        if (type.enumValueIndex < 0) SyncAudioDataWithEnum();
         // Имя AudioType
         GUILayout.Label(type.enumDisplayNames[type.enumValueIndex],
             EditorStyles.boldLabel,

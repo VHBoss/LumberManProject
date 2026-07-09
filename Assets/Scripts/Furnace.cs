@@ -115,7 +115,12 @@ public class Furnace : MonoBehaviour
 
     IEnumerator Eat(UnloadZone hub)
     {
-        if(sfxMoveHandle != null) sfxMoveHandle.Stop();
+        if (sfxMoveHandle != null)
+        {
+            sfxMoveHandle.Stop();
+            sfxMoveHandle = null;
+        }
+
         isEating = true;
         yield return new WaitForSeconds(1);
         sfxEatingHandle = AudioManager.PlayAttached(sfxEating, transform);
@@ -143,7 +148,11 @@ public class Furnace : MonoBehaviour
         hungerTimeout = hungerZeroTimeout;
         animator.SetBool("Eat", false);
         StartFX();
-        if (sfxEatingHandle != null) sfxEatingHandle.Stop();
+        if (sfxEatingHandle != null)
+        {
+            sfxEatingHandle.Stop();
+            sfxEatingHandle = null;
+        }
         sfxMoveHandle = AudioManager.PlayAttached(AudioType.TreeBurn, transform);
     }
 

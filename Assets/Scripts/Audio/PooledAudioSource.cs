@@ -24,7 +24,7 @@ public class PooledAudioSource : MonoBehaviour
         Source.loop = data.loop;
         Source.clip = data.GetClip();
 
-        Source.Play();
+        if(Source.clip != null) Source.Play();
     }
 
     public void Stop()

@@ -6,9 +6,6 @@ public class TreeLog : MonoBehaviour, IDamage
 {
     [SerializeField] ParticleSystem[] smoke;
 
-    [Header("SFX")]
-    [SerializeField] AudioType sfxBurn;
-
     private readonly int HeatProperty = Shader.PropertyToID("_Heat");
     private readonly int DissolveProperty = Shader.PropertyToID("_Dissolve");
 
@@ -16,7 +13,6 @@ public class TreeLog : MonoBehaviour, IDamage
     private MeshRenderer mr;
     private int prevCount;
     private float prevDamage;
-    private bool isBurn;
 
     internal void Init(float burnAmount, float forceX, float forceY)
     {
@@ -63,12 +59,6 @@ public class TreeLog : MonoBehaviour, IDamage
 
     public void Burn(Collider other)
     {
-        if (!isBurn)
-        {
-            isBurn = true;
-            AudioManager.PlayAt(sfxBurn, transform.position);
-        }
-
         other.tag = "Untagged";
         Destroyed();
         MeshRenderer mr = other.GetComponent<MeshRenderer>();

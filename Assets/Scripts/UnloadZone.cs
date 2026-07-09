@@ -48,7 +48,7 @@ public class UnloadZone : MonoBehaviour
 
     void StartProcess()
     {
-        if (balkCount >= maxCount)
+        if (balkCount == maxCount)
         {
             GiveBonus();
             Cancel();

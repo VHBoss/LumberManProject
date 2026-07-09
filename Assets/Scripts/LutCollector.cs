@@ -26,6 +26,8 @@ public class LutCollector : MonoBehaviour
             other.enabled = false;
             other.transform.SetParent(transform);
 
+            AudioManager.PlayAt(sfxTakeCoin, transform.position);
+
             currentCount++;
             UpdateUI();
             DOTween.Sequence()
@@ -33,7 +35,6 @@ public class LutCollector : MonoBehaviour
                 .Join(other.transform.DOScale(0.2f, 0.3f))
                 .OnComplete(() =>
                 {
-                    AudioManager.PlayAt(sfxTakeCoin, transform.position);
                     DOTween.Kill(other, true);
                     coins.Add(other.gameObject);
                     other.gameObject.SetActive(false);

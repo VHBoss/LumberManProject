@@ -144,10 +144,10 @@ public class PlayerHealth : MonoBehaviour
 
         sfxBurnHandler.Source.volume = sfxBurnVolume * burnTimer;
 
-        if (burnTimer <= 0f)
-        {
-            sfxBurnHandler.Stop();
-            sfxBurnHandler = null;
-        }
+        //if (burnTimer <= 0f)
+        //{
+        //    sfxBurnHandler.Stop();
+        //    sfxBurnHandler = null;
+        //}
     }
 }

@@ -59,15 +59,6 @@ MonoBehaviour:
     volume: 0.288
     pitch: 1.13
     mute: 0
-  - type: 21
-    playMode: 1
-    clip: {fileID: 8300000, guid: b60374ffff99a7d49915b8bd414b54c3, type: 3}
-    clips: []
-    loop: 0
-    sfx3D: 0
-    volume: 0
-    pitch: -3
-    mute: 1
   - type: 22
     playMode: 1
     clip: {fileID: 8300000, guid: b96f65a83d5b24d4098a065dd8f65bad, type: 3}
@@ -201,15 +192,6 @@ MonoBehaviour:
     volume: 0.853
     pitch: 1
     mute: 0
-  - type: 33
-    playMode: 1
-    clip: {fileID: 8300000, guid: 9ba3657167bdd3c409159c14df2ed6b8, type: 3}
-    clips: []
-    loop: 0
-    sfx3D: 0
-    volume: 0
-    pitch: -3
-    mute: 1
   - type: 34
     playMode: 0
     clip: {fileID: 8300000, guid: b527b97142ea5494d8870311a7a75a70, type: 3}
@@ -229,6 +211,15 @@ MonoBehaviour:
     pitch: 1
     mute: 0
   - type: 61
+    playMode: 0
+    clip: {fileID: 8300000, guid: d349d1eb6c372ed45b17ee2dd0c47531, type: 3}
+    clips: []
+    loop: 1
+    sfx3D: 0
+    volume: 0.09
+    pitch: 1
+    mute: 0
+  - type: 0
     playMode: 0
     clip: {fileID: 8300000, guid: d349d1eb6c372ed45b17ee2dd0c47531, type: 3}
     clips: []
