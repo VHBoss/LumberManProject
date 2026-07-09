@@ -11,6 +11,7 @@ public class UnloadZone : MonoBehaviour
     [SerializeField] ParticleSystem poof;
     [SerializeField] Transform root;
     [SerializeField] int startCount;
+    [SerializeField] GameObject coinPrefab;
 
     [Header("SFX")]
     [SerializeField] AudioType sfxDropCoins;
@@ -88,7 +89,8 @@ public class UnloadZone : MonoBehaviour
     {
         AudioManager.PlayAt(sfxDropCoins, transform.position);
         poof.Play();
-        Events.GetCoins?.Invoke(transform.position);
+        //Events.GetCoins?.Invoke(transform.position);
+        GiveBonus(transform.position);
     }
 
     void UpdateUI(int count)
@@ -170,4 +172,87 @@ public class UnloadZone : MonoBehaviour
         }
         return null;
     }
+
+
+    void GiveBonus(Vector3 pos)
+    {
+        int random = Random.Range(2, 8);
+        List<int> availableDirections = new List<int>();
+        for (int i = 0; i < 8; i++)
+        {
+            availableDirections.Add(i);
+        }
+
+        for (int i = 0; i < random; i++)
+        {
+            // Если направления закончились, выходим
+            if (availableDirections.Count == 0) break;
+
+            // Выбираем случайное направление из доступных
+            int dirIndex = Random.Range(0, availableDirections.Count);
+            int direction = availableDirections[dirIndex];
+            availableDirections.RemoveAt(dirIndex);
+
+            // Создаем объект
+            GameObject obj = Instantiate(coinPrefab, pos, Quaternion.identity);
+            obj.GetComponent<Collider>().enabled = false;
+
+            // Запускаем анимацию полета по дуге
+            ThrowToGround(obj, direction, pos);
+        }
+    }
+
+    void ThrowToGround(GameObject obj, int direction, Vector3 startPos)
+    {
+        // 8 направлений: 4 по сторонам куба, 4 по углам
+        Vector3[] directions = new Vector3[]
+        {
+        new Vector3(1, 0, 0),   // Право (0°)
+        new Vector3(0, 0, 1),   // Вперед (90°)
+        new Vector3(-1, 0, 0),  // Лево (180°)
+        new Vector3(0, 0, -1),  // Назад (270°)
+        new Vector3(1, 0, 1),   // Право-вперед (45°)
+        new Vector3(-1, 0, 1),  // Лево-вперед (135°)
+        new Vector3(-1, 0, -1), // Лево-назад (225°)
+        new Vector3(1, 0, -1)   // Право-назад (315°)
+        };
+
+        // Вычисляем целевую позицию на земле
+        Vector3 targetPos = startPos + directions[direction].normalized;
+        targetPos.y = 0; // Устанавливаем на уровень земли (Y = 0)
+
+        // Параметры полета
+        float duration = 0.8f;
+        float height = 0.5f;
+
+        // Сохраняем начальную позицию для расчета дуги
+        Vector3 arcStartPos = startPos;
+
+        // Используем DOVirtual для кастомной траектории
+        float t = 0;
+        DOTween.To(() => t, x => t = x, 1, duration)
+            .SetEase(Ease.OutQuad)
+            .OnUpdate(() =>
+            {
+                // Линейная интерполяция между точками
+                Vector3 currentPos = Vector3.Lerp(arcStartPos, targetPos, t);
+
+                // Параболическая высота (дуга)
+                float parabolaHeight = 4 * height * t * (1 - t);
+                currentPos.y = startPos.y + parabolaHeight;
+
+                obj.transform.position = currentPos;
+            })
+            .OnComplete(() =>
+            {
+                obj.GetComponent<Collider>().enabled = true;
+
+                // Фиксируем конечную позицию на земле
+                //obj.transform.position = targetPos;
+
+                // Опционально: добавить эффект приземления (партиклы, звук)
+                // OnLandingEffect(obj.transform.position);
+            });
+    }
+
 }

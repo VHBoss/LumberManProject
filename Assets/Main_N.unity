@@ -6293,7 +6293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &478107486
 Transform:
   m_ObjectHideFlags: 0
@@ -7413,76 +7413,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8e5d2849257f02247ba6de2b64297786, type: 3}
   m_PrefabInstance: {fileID: 556959596}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &558867685
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 558867687}
-  - component: {fileID: 558867686}
-  m_Layer: 0
-  m_Name: SpawnerOLD
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &558867686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558867685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c416262ba06af541b44f4d688acaf04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TreeSpawner
-  vegetables:
-  - prefab: {fileID: 3485243894886970455, guid: 7a3c274a95bc40d4d833869a26eef5f0, type: 3}
-    count: 60
-    randomizeColor: 1
-  - prefab: {fileID: 9025306648437834203, guid: 1c3bd6d30988be04aaa856e07906ac7e, type: 3}
-    count: 50
-    randomizeColor: 1
-  - prefab: {fileID: 2945881967290563564, guid: c17eaee8be5bbec4f99085d5f0dac724, type: 3}
-    count: 0
-    randomizeColor: 0
-  - prefab: {fileID: 748139928301724772, guid: 77379fedbc3e99c4f91c6daea44c56ad, type: 3}
-    count: 0
-    randomizeColor: 0
-  coins:
-    prefab: {fileID: 3803760153655541858, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
-    count: 50
-    randomizeColor: 0
-  bounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 14.2, y: 2.04, z: 3.11}
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 145
-  extends: {x: 0.5, y: 5, z: 0.5}
-  minScale: 0.6
-  maxScale: 0.8
---- !u!4 &558867687
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558867685}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.88, y: 0, z: -0.99}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &564280995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29462,7 +29392,6 @@ SceneRoots:
   - {fileID: 631068387}
   - {fileID: 526393415}
   - {fileID: 1421679283}
-  - {fileID: 558867687}
   - {fileID: 478107486}
   - {fileID: 936003297}
   - {fileID: 758434194}

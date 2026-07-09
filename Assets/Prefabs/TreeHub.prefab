@@ -5839,6 +5839,7 @@ MonoBehaviour:
   poof: {fileID: 7347495422178193025}
   root: {fileID: 1887934937300442411}
   startCount: 0
+  coinPrefab: {fileID: 3803760153655541858, guid: 254ed80c3a5b3c84ea45fd0df372525b, type: 3}
   sfxDropCoins: 41
 --- !u!54 &1727792392004361894
 Rigidbody:
