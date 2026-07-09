@@ -144,7 +144,7 @@ MonoBehaviour:
     clips: []
     loop: 1
     sfx3D: 0
-    volume: 0.136
+    volume: 0.262
     pitch: 1.24
     mute: 0
   - type: 4
@@ -167,8 +167,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 34abc89c5d4e8e34b9cf589ebaf96507, type: 3}
     - {fileID: 8300000, guid: 55a10810958068e4eb127d143051a98d, type: 3}
     loop: 0
-    sfx3D: 1
-    volume: 0.124
+    sfx3D: 0
+    volume: 0.058
     pitch: 1.3
     mute: 0
   - type: 6
