@@ -168,6 +168,8 @@ public class UnloadZone : MonoBehaviour
 
     void GiveBonus(Vector3 pos)
     {
+        ui.gameObject.SetActive(false);
+
         int random = Random.Range(2, 8);
         List<int> availableDirections = new List<int>();
         for (int i = 0; i < 8; i++)
