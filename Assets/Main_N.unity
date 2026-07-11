@@ -8453,7 +8453,7 @@ MonoBehaviour:
   maxHunger: 225
   hungerPerSecond: 5
   hungerZeroTimeout: 3
-  balkPrice: 5
+  balkPrice: 6
   sleepDuration: 5
   ui: {fileID: 535869439}
   animator: {fileID: 1414140745}

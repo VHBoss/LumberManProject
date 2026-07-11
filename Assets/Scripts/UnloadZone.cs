@@ -44,41 +44,42 @@ public class UnloadZone : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        Cancel();
+        if (other.CompareTag("Player"))
+        {
+            Cancel();
+        }
     }
 
     void StartProcess()
     {
+        if (balkCollector == null) return;
+
         GameObject balk = balkCollector.GetBalk();
-        if (balk != null)
+
+        if (balk == null) return;
+        
+        balkCount++;
+        ui.SetCount(balkCount, maxCount);
+
+        if (balkCount >= maxCount)
         {
-            balkCount++;
-            ui.SetCount(balkCount, maxCount);
-
-            if (balkCount >= maxCount)
-            {
-                GiveBonus();
-                Cancel();
-                return;
-            }
-
-            balk.transform.SetParent(null);
-            balk.SetActive(true);
-
-            DOTween.Sequence()
-                .Append(balk.transform.DOMove(target.position, 0.3f))
-                .Join(balk.transform.DOScale(0.8f, 0.3f))
-                .OnComplete(() =>
-                {
-                    balks.Add(balk);
-                    balk.SetActive(false);
-                    UpdateVisualBarks(balkCount);
-                });
-        }
-        else
-        {
+            GiveBonus();
             Cancel();
+            return;
         }
+
+        balk.transform.SetParent(null);
+        balk.SetActive(true);
+
+        DOTween.Sequence()
+            .Append(balk.transform.DOMove(target.position, 0.3f))
+            .Join(balk.transform.DOScale(0.8f, 0.3f))
+            .OnComplete(() =>
+            {
+                balks.Add(balk);
+                balk.SetActive(false);
+                UpdateVisualBarks(balkCount);
+            });
     }
 
     [ContextMenu("GiveBonus")]

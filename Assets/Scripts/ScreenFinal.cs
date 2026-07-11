@@ -10,6 +10,7 @@ public class ScreenFinal : MonoBehaviour
 
     void Start()
     {
+        fade.color = Color.black;
         CanvasGroup img = buttonReplay.GetComponent<CanvasGroup>();
         buttonReplay.onClick.AddListener(Replay);
         DOTween.Sequence()
